@@ -9,6 +9,12 @@ $(function() {
   progress();
   ticketCounter();
   timer();
+
+  $('.scroll_to').click(function(e) {
+    e.preventDefault();
+    $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
+  });
+
   // Custom JS
 });
 
@@ -18,6 +24,7 @@ function progress() {
     let t = pers++ + "%";
     $(".pers").text(t);
     $(".pl_l").css("width", t);
+    if (pers == 55) $('.pr span').css('color', '#fff');
     if (pers > 60) clearInterval(interval);
   }, 10);
 }
